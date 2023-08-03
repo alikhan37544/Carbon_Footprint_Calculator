@@ -1,50 +1,95 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  
-  h1 {
+    margin: 0;
+    background: linear-gradient(45deg, #00a0a0, #004080);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #fff;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+h1 {
     text-align: center;
-  }
-  
-  form {
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #007bff;
+}
+
+.form-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  label {
-    display: block;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
     margin-bottom: 5px;
-  }
-  
-  input[type="number"] {
+    font-weight: bold;
+}
+
+input[type="number"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  input[type="submit"] {
+    border-radius: 5px;
+}
+
+button[type="submit"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
     background-color: #0056b3;
-  }
-  
-  #result {
-    font-weight: bold;
+}
+
+#result-container {
+    display: none;
     text-align: center;
-    margin-top: 20px;
-  }
-  
+    margin-top: 40px;
+}
+
+#result-text {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+#go-back-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#go-back-button:hover {
+    background-color: #0056b3;
+}

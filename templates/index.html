@@ -6,24 +6,28 @@
 </head>
 <body>
     <h1>Carbon Footprint Calculator</h1>
-    <form action="/calculate" method="post">
-        <label for="activity">Activity:</label>
-        <select name="activity" required>
-            <option value="food">Food</option>
-            <option value="electricity">Electricity</option>
-            <option value="travel">Travel</option>
-            <!-- Add other options for different activities as needed -->
-        </select><br>
+    <div class="form-container">
+        <form id="carbon-form" action="/calculate" method="post">
+            <label for="activity">Activity:</label>
+            <select name="activity" id="activity" required>
+                <option value="food">Food</option>
+                <option value="electricity">Electricity</option>
+                <option value="travel">Travel</option>
+                <!-- Add other options for different activities as needed -->
+            </select>
 
-        <label for="energy_used">Energy Used:</label>
-        <input type="number" name="energy_used" step="0.01" required><br>
-        <!-- You can set 'step' attribute to control the precision of the energy value -->
+            <label for="energy_used">Energy Used (kWh):</label>
+            <input type="number" name="energy_used" id="energy_used" step="0.01" required>
 
-        <!-- Add other input fields here as needed -->
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
 
-        <input type="submit" value="Calculate">
-    </form>
-    <!-- Add your JS script here to handle form submission and calculations -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div id="result-container">
+        <p id="result-text"></p>
+        <button id="go-back-button">Go Back</button>
+    </div>
+
+    <script src="{{ url_for('serve_static', filename='js/script.js') }}"></script>
 </body>
 </html>
