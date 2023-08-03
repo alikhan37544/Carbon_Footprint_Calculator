@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Carbon Footprint Calculator</title>
-    <!-- Add your CSS styling here -->
+    <link rel="stylesheet" href="{{ url_for('serve_static', filename='css/style.css') }}">
 </head>
 <body>
     <h1>Carbon Footprint Calculator</h1>
@@ -24,5 +24,6 @@
         <input type="submit" value="Calculate">
     </form>
     <!-- Add your JS script here to handle form submission and calculations -->
+    <script src="{{ url_for('serve_static', filename='js/script.js') }}"></script>
 </body>
 </html>
