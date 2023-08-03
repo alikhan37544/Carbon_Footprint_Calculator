@@ -3,12 +3,10 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# Replace 'your_mysql_username', 'your_mysql_password', 'your_db_name', and 'your_host' with your MySQL credentials.
 db = mysql.connector.connect(
-    host="your_host",
-    user="your_mysql_username",
-    password="your_mysql_password",
-    database="your_db_name"
+    user="root",
+    password="admin",
+    database="CarbonCalc"
 )
 
 cursor = db.cursor()
@@ -20,16 +18,19 @@ def index():
 @app.route('/calculate', methods=['POST'])
 def calculate():
     # Get form data
-    distance_travelled = float(request.form['distance_travelled'])
-    electricity_usage = float(request.form['electricity_usage'])
+    activity = request.form['activity']
+    energy_used = float(request.form['energy_used'])
     # Add other input fields as needed
 
-    # Calculate carbon footprint (You need to implement the calculation logic based on the user inputs)
+    # Calculate carbon footprint based on activity and energy_used
+    # Get Emission function is still missing, to be built
+    carbon_emission_factor = get_carbon_emission_factor(activity)  
+    carbon_footprint = energy_used * carbon_emission_factor
 
     # Store data in the MySQL database
-    # You can create a table with columns like 'id', 'distance_travelled', 'electricity_usage', 'carbon_footprint', etc.
-    query = "INSERT INTO carbon_footprints (distance_travelled, electricity_usage, carbon_footprint) VALUES (%s, %s, %s)"
-    data = (distance_travelled, electricity_usage, carbon_footprint)
+    
+    query = "INSERT INTO carbon_footprints (activity, energy_used, carbon_footprint) VALUES (%s, %s, %s)"
+    data = (activity, energy_used, carbon_footprint)
     cursor.execute(query, data)
     db.commit()
 

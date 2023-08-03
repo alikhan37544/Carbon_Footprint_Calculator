@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carbon Footprint Calculator</title>
+    <!-- Add your CSS styling here -->
+</head>
+<body>
+    <h1>Carbon Footprint Calculator</h1>
+    <form action="/calculate" method="post">
+        <label for="activity">Activity:</label>
+        <select name="activity" required>
+            <option value="food">Food</option>
+            <option value="electricity">Electricity</option>
+            <option value="travel">Travel</option>
+            <!-- Add other options for different activities as needed -->
+        </select><br>
+
+        <label for="energy_used">Energy Used:</label>
+        <input type="number" name="energy_used" step="0.01" required><br>
+        <!-- You can set 'step' attribute to control the precision of the energy value -->
+
+        <!-- Add other input fields here as needed -->
+
+        <input type="submit" value="Calculate">
+    </form>
+    <!-- Add your JS script here to handle form submission and calculations -->
+</body>
+</html>
