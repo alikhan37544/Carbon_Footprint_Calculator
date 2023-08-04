@@ -5,11 +5,20 @@ $(document).ready(function() {
         // Get form data
         var activity = $('#activity').val();
         var energy_used = parseFloat($('#energy_used').val());
+        var distance_travelled = parseFloat($('#distance_travelled').val()); // Multiplier for travel
+        var service_usage = parseFloat($('#service_usage').val()); // Multiplier for services
 
         // Validate the input
         if (isNaN(energy_used) || energy_used <= 0) {
             alert('Please enter a valid energy usage value.');
             return;
+        }
+
+        // Apply temporary multipliers (if available)
+        if (activity === 'travel' && !isNaN(distance_travelled)) {
+            energy_used *= distance_travelled;
+        } else if (activity === 'services' && !isNaN(service_usage)) {
+            energy_used *= service_usage;
         }
 
         // Calculate carbon footprint based on activity and energy_used
@@ -31,6 +40,9 @@ $(document).ready(function() {
 
         // Reset the form inputs
         $('#carbon-form')[0].reset();
+
+        // Hide additional use cases
+        $('#additional-use-cases').slideUp();
     });
 
     $('#add-more-button').on('click', function() {
@@ -40,6 +52,19 @@ $(document).ready(function() {
 
         // Reset the form inputs
         $('#carbon-form')[0].reset();
+
+        // Hide additional use cases
+        $('#additional-use-cases').slideUp();
+    });
+
+    // Show/hide additional use cases based on selected activity
+    $('#activity').on('change', function() {
+        var selectedActivity = $(this).val();
+        if (selectedActivity === 'travel' || selectedActivity === 'services') {
+            $('#additional-use-cases').slideDown();
+        } else {
+            $('#additional-use-cases').slideUp();
+        }
     });
 });
 

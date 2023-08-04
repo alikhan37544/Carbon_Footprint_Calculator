@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: linear-gradient(45deg, #00a0a0, #004080);
+    background: linear-gradient(135deg, #4DA0B0, #D39D38);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     color: #fff;
@@ -18,11 +18,13 @@ body {
         background-position: 0% 50%;
     }
 }
+
 h1 {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 32px;
-    color: #007bff;
+    font-size: 36px;
+    color: #ffcd02; /* Golden yellow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .form-container {
@@ -32,6 +34,16 @@ h1 {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInAnimation 1s;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 form {
@@ -50,6 +62,9 @@ input[type="number"] {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 button[type="submit"] {
@@ -61,16 +76,35 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+#additional-use-cases {
+    animation: slideDownAnimation 1s;
+}
+
+@keyframes slideDownAnimation {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 #result-container {
     display: none;
     text-align: center;
     margin-top: 40px;
+    animation: fadeInAnimation 1s;
 }
 
 #result-text {
@@ -78,9 +112,11 @@ button[type="submit"]:hover {
     font-size: 24px;
     margin-bottom: 20px;
     color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-#go-back-button {
+#go-back-button,
+#add-more-button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -88,8 +124,53 @@ button[type="submit"]:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-#go-back-button:hover {
+#go-back-button:hover,
+#add-more-button:hover {
     background-color: #0056b3;
+}
+
+.input-info {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+#additional-use-cases {
+    animation: slideDownAnimation 1s;
+}
+
+@keyframes slideDownAnimation {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Add the following styles for the list items */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s; /* Add transition for color */
+}
+
+/* Add hover effect for the list items */
+li:hover {
+    color: #ffcd02; /* Golden yellow */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
