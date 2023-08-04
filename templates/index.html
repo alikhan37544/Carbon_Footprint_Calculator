@@ -1,54 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Carbon Footprint Calculator</title>
-    <link rel="stylesheet" href="{{ url_for('serve_static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Carbon Footprint Calculator</h1>
-    <div class="form-container">
-        <form id="carbon-form" action="/calculate" method="post">
-            <label for="activity">Activity:</label>
-            <select name="activity" id="activity" required>
-                <option value="food">Food</option>
-                <option value="electricity">Electricity</option>
-                <option value="travel">Travel</option>
-                <option value="services">Services</option>
-                <!-- Add other options for different activities as needed -->
-            </select>
+<label for="activity">Activity:</label>
+<select name="activity" id="activity" required>
+    <option value="food">Food</option>
+    <option value="electricity">Electricity</option>
+    <option value="travel">Travel</option>
+    <option value="services">Services</option>
+    <!-- Add other options for different activities as needed -->
+</select>
+<label for="energy_used">Energy Used (kWh):</label>
+<input type="number" name="energy_used" id="energy_used" step="0.01" required>
+<small class="input-info">Enter the energy usage in kilowatt-hours (kWh).</small>
+<!-- Additional use cases -->
+<div id="additional-use-cases">
+    <label for="distance_travelled">Distance Travelled (km):</label>
+    <input type="number" name="distance_travelled" id="distance_travelled" step="0.01">
+    <small class="input-info">Enter the distance travelled in kilometers (km).</small>
 
-            <label for="energy_used">Energy Used (kWh):</label>
-            <input type="number" name="energy_used" id="energy_used" step="0.01" required>
-            <small class="input-info">Enter the energy usage in kilowatt-hours (kWh).</small>
+    <label for="service_usage">Service Usage (hours):</label>
+    <input type="number" name="service_usage" id="service_usage" step="0.01">
+    <small class="input-info">Enter the service usage in hours.</small>
 
-            <!-- Additional use cases -->
-            <div id="additional-use-cases">
-                <label for="distance_travelled">Distance Travelled (km):</label>
-                <input type="number" name="distance_travelled" id="distance_travelled" step="0.01">
-                <small class="input-info">Enter the distance travelled in kilometers (km).</small>
-            
-                <label for="service_usage">Service Usage (hours):</label>
-                <input type="number" name="service_usage" id="service_usage" step="0.01">
-                <small class="input-info">Enter the service usage in hours.</small>
-            
-                <ul>
-                    <li>Activity 1</li>
-                    <li>Activity 2</li>
-                    <!-- Add other list items as needed -->
-                </ul>
-            </div>
-            
+    <ul>
+        <li>Activity 1</li>
+        <li>Activity 2</li>
+        <!-- Add other list items as needed -->
+    </ul>
+</div>
 
-            <button type="submit">Calculate</button>
-        </form>
-    </div>
-
-    <div id="result-container">
-        <p id="result-text"></p>
-        <button id="go-back-button">Go Back</button>
-        <button id="add-more-button">Add More Entries</button>
-    </div>
-
-    <script src="{{ url_for('serve_static', filename='js/script.js') }}"></script>
+<button type="submit">Calculate</button>
+</form>
+</div>
+<div id="result-container">
+<p id="result-text"></p>
+<button id="go-back-button">Go Back</button>
+<button id="add-more-button">Add More Entries</button>
+</div>
+<script src="{{ url_for('serve_static', filename='js/script.js') }}"></script>
 </body>
 </html>

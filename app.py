@@ -32,7 +32,6 @@ def calculate():
     # Get form data
     activity = request.form['activity']
     energy_used = float(request.form['energy_used'])
-    # Add other input fields as needed
 
     # Calculate carbon footprint based on activity and energy_used
     carbon_emission_factor = get_carbon_emission_factor(activity) 

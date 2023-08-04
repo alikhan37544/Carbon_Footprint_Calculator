@@ -1,24 +1,44 @@
 $(document).ready(function() {
     $('#carbon-form').on('submit', function(e) {
         e.preventDefault();
+        var selectedActivity = $('#activity').val();
+        if (selectedActivity === "") {
+            alert('Please select an activity.');
+            return;
+        }
 
-        // Get form data
-        var activity = $('#activity').val();
-        var energy_used = parseFloat($('#energy_used').val());
-        var distance_travelled = parseFloat($('#distance_travelled').val()); // Multiplier for travel
-        var service_usage = parseFloat($('#service_usage').val()); // Multiplier for services
+        // Show the appropriate section and hide the previous section
+        $('#' + selectedActivity + '-container').show();
+        $('#form-container').hide();
+    });
+
+    $('.back-button').on('click', function() {
+        // Get the data-previous-section attribute value
+        var previousSection = $(this).data('previous-section');
+        // Show the previous section and hide the current section
+        $('#' + previousSection).show();
+        $(this).closest('.use-case').hide();
+    });
+
+    $('.next-button').on('click', function() {
+        // Get the data-next-section attribute value
+        var nextSection = $(this).data('next-section');
+        // Show the next section and hide the current section
+        $('#' + nextSection).show();
+        $(this).closest('.use-case').hide();
+    });
+
+    // Handling form submissions
+    $('#food-form, #energy-form, #travel-form, #services-form').on('submit', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var activity = form.attr('id').split('-')[0];
+        var energy_used = parseFloat(form.find('input[type="number"]').val());
 
         // Validate the input
         if (isNaN(energy_used) || energy_used <= 0) {
             alert('Please enter a valid energy usage value.');
             return;
-        }
-
-        // Apply temporary multipliers (if available)
-        if (activity === 'travel' && !isNaN(distance_travelled)) {
-            energy_used *= distance_travelled;
-        } else if (activity === 'services' && !isNaN(service_usage)) {
-            energy_used *= service_usage;
         }
 
         // Calculate carbon footprint based on activity and energy_used
@@ -29,42 +49,29 @@ $(document).ready(function() {
         $('#result-text').text('Your carbon footprint is: ' + carbon_footprint.toFixed(2) + ' kg CO2');
 
         // Show the result container and hide the form container
-        $('#form-container').hide();
+        form.closest('.use-case').hide();
         $('#result-container').show();
     });
 
     $('#go-back-button').on('click', function() {
         // Show the form container and hide the result container
-        $('#form-container').show();
+        $('.form-container').show();
         $('#result-container').hide();
 
         // Reset the form inputs
-        $('#carbon-form')[0].reset();
-
-        // Hide additional use cases
-        $('#additional-use-cases').slideUp();
+        $('#food-form, #energy-form, #travel-form, #services-form')[0].reset();
     });
 
     $('#add-more-button').on('click', function() {
         // Show the form container and hide the result container
-        $('#form-container').show();
+        $('.form-container').show();
         $('#result-container').hide();
 
         // Reset the form inputs
-        $('#carbon-form')[0].reset();
+        $('#food-form, #energy-form, #travel-form, #services-form')[0].reset();
 
         // Hide additional use cases
-        $('#additional-use-cases').slideUp();
-    });
-
-    // Show/hide additional use cases based on selected activity
-    $('#activity').on('change', function() {
-        var selectedActivity = $(this).val();
-        if (selectedActivity === 'travel' || selectedActivity === 'services') {
-            $('#additional-use-cases').slideDown();
-        } else {
-            $('#additional-use-cases').slideUp();
-        }
+        $('#food-container, #energy-container, #travel-container, #services-container').hide();
     });
 });
 
