@@ -6,72 +6,48 @@
 </head>
 <body>
     <h1>Carbon Footprint Calculator</h1>
-    <div class="form-container" id="form-container">
-        <form id="carbon-form">
-            <label for="activity">Select Activity:</label>
+    <div class="form-container">
+        <form id="carbon-form" action="/calculate" method="post">
+            <label for="activity">Activity:</label>
             <select name="activity" id="activity" required>
-                <option value="">Choose an activity</option>
                 <option value="food">Food</option>
                 <option value="electricity">Electricity</option>
                 <option value="travel">Travel</option>
                 <option value="services">Services</option>
+                <!-- Add other options for different activities as needed -->
             </select>
-            <button type="submit" id="next-button">Next</button>
-        </form>
-    </div>
 
-    <div class="form-container" id="energy-container" style="display: none;">
-        <form id="energy-form">
             <label for="energy_used">Energy Used (kWh):</label>
             <input type="number" name="energy_used" id="energy_used" step="0.01" required>
             <small class="input-info">Enter the energy usage in kilowatt-hours (kWh).</small>
-            <button type="submit" class="back-button" data-previous-section="form-container">Back</button>
-            <button type="submit" class="next-button" data-next-section="food-container">Next</button>
-        </form>
-    </div>
 
-    <div id="additional-use-cases" style="display: none;">
-        <!-- Food -->
-        <div class="use-case" id="food-container">
-            <form id="food-form">
-                <label for="food_usage">Food Usage (kg):</label>
-                <input type="number" name="food_usage" id="food_usage" step="0.01">
-                <small class="input-info">Enter the food usage in kilograms (kg).</small>
-                <button type="submit" class="back-button" data-previous-section="energy-container">Back</button>
-                <button type="submit" class="next-button" data-next-section="travel-container">Next</button>
-            </form>
-        </div>
-
-        <!-- Travel -->
-        <div class="use-case" id="travel-container">
-            <form id="travel-form">
-                <label for="travel_distance">Distance Travelled (km):</label>
-                <input type="number" name="travel_distance" id="travel_distance" step="0.01">
+            <!-- Additional use cases -->
+            <div id="additional-use-cases">
+                <label for="distance_travelled">Distance Travelled (km):</label>
+                <input type="number" name="distance_travelled" id="distance_travelled" step="0.01">
                 <small class="input-info">Enter the distance travelled in kilometers (km).</small>
-                <button type="submit" class="back-button" data-previous-section="food-container">Back</button>
-                <button type="submit" class="next-button" data-next-section="services-container">Next</button>
-            </form>
-        </div>
-
-        <!-- Service -->
-        <div class="use-case" id="services-container">
-            <form id="services-form">
+            
                 <label for="service_usage">Service Usage (hours):</label>
                 <input type="number" name="service_usage" id="service_usage" step="0.01">
                 <small class="input-info">Enter the service usage in hours.</small>
-                <button type="submit" class="back-button" data-previous-section="travel-container">Back</button>
-                <button type="submit">Calculate</button>
-            </form>
-        </div>
-    </div>
+            
+                <ul>
+                    <li>Activity 1</li>
+                    <li>Activity 2</li>
+                    <!-- Add other list items as needed -->
+                </ul>
+            </div>
+            
 
-    <div id="result-container" style="display: none;">
+            <button type="submit">Calculate</button>
+        </form>
+@ -26,9 +46,10 @@
+    <div id="result-container">
         <p id="result-text"></p>
         <button id="go-back-button">Go Back</button>
         <button id="add-more-button">Add More Entries</button>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('serve_static', filename='js/script.js') }}"></script>
 </body>
 </html>
