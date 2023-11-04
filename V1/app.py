@@ -14,7 +14,7 @@ cursor = db.cursor()
 
 def get_carbon_emission_factor(activity):
     emission_factors = {
-        'food': 2.5,        # Example value (2.5 kg CO2 per kWh)
+        'food': 12.5,        # Example value (2.5 kg CO2 per kWh)
         'electricity': 0.6, # Example value (0.6 kg CO2 per kWh)
         'travel': 2.0,      # Example value (2.0 kg CO2 per kWh)
         'services': 1.2,    # Example value (1.2 kg CO2 per kWh)
