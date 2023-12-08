@@ -17,8 +17,12 @@ def get_carbon_emission_factor(activity):
         'food': 12.5,        # Example value (2.5 kg CO2 per kWh)
         'electricity': 0.6, # Example value (0.6 kg CO2 per kWh)
         'travel': 2.0,      # Example value (2.0 kg CO2 per kWh)
-        'services': 1.2,    # Example value (1.2 kg CO2 per kWh)
+        'services': 1.2,
+	'petrol': 8.0,    # Example value (1.2 kg CO2 per kWh)
         # Add other activities and their emission factors as needed
+	# We have taken some of the imporant things here, and just assigned multipliers for the same
+	# An improvement to that could be to either figure out the emmission according to the location
+	# or estimate it using the historica data that is present there
     }
 
     return emission_factors.get(activity, 0.0)  # Return the emission factor or 0.0 if activity not found
