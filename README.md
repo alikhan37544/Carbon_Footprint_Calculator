@@ -8,3 +8,5 @@ We will also give out suggestions to offset your carbon footprint like for examp
 
 We could also profile all of this into a database and have different users have different things.
 Also we could personalize the things that we have there and give you as accurate a reading as possible.
+
+more stuff 
