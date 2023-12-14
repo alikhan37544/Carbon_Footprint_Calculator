@@ -10,3 +10,6 @@ We could also profile all of this into a database and have different users have 
 Also we could personalize the things that we have there and give you as accurate a reading as possible.
 
 more stuff 
+
+
+I think I fixed my git. if it's fixed then this part of the code should automatically append and automatically push straight to github once I authorise it using a PAT
